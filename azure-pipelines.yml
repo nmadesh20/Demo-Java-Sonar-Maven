@@ -28,6 +28,7 @@ steps:
     sonarQubeRunAnalysis: true
     isJacocoCoverageReportXML: true
     sqMavenPluginVersionChoice: 'latest'
+    package: "sonar:sonar"
     
 
 - task: SonarCloudPublish@1
