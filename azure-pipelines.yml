@@ -15,12 +15,14 @@ steps:
     SonarCloud: 'sonarcloud'
     organization: 'app-sonar2706'
     scannerMode: 'Other'
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    codeCoverageToolOption: 'JaCoCo'
+    codeCoverageToolOption: 'Cobertura'
+    codeCoverageRestoreOriginalPomXml: true
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
@@ -28,9 +30,6 @@ steps:
     sonarQubeRunAnalysis: true
     isJacocoCoverageReportXML: true
     sqMavenPluginVersionChoice: 'latest'
-    package: "sonar:sonar"
-    
-
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
